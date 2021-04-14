@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui.gd" type="Script" id=3]
+[ext_resource path="res://game_world.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+margin_left = 0.00012207
+margin_top = 3.05176e-05
+margin_right = 1358.0
+margin_bottom = 718.0
+color = Color( 0.705882, 0.733333, 0.807843, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy" type="Area2D" parent="World"]
+position = Vector2( 220.454, 128.697 )
+collision_layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="World/Enemy"]
+margin_left = -11.0802
+margin_top = -10.7387
+margin_right = 10.9198
+margin_bottom = 10.2613
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Enemy"]
+shape = SubResource( 1 )
+
+[node name="Player" parent="World" instance=ExtResource( 2 )]
+
+[node name="Clock" type="Timer" parent="World"]
+wait_time = 3.0
+
+[node name="Gui" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="World/Enemy" to="World/Player" method="_on_Enemy_body_entered"]
+[connection signal="timeout" from="World/Clock" to="World" method="_on_Hour_passed"]
+[connection signal="timeout" from="World/Clock" to="World/Player" method="_on_Hour_passed"]

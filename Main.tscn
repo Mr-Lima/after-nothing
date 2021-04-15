@@ -45,6 +45,11 @@ shape = SubResource( 1 )
 [node name="Clock" type="Timer" parent="World"]
 wait_time = 3.0
 
+[node name="Test" type="Timer" parent="World"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="Gui" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -53,5 +58,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="body_entered" from="World/Enemy" to="World/Player" method="_on_Enemy_body_entered"]
-[connection signal="timeout" from="World/Clock" to="World" method="_on_Hour_passed"]
 [connection signal="timeout" from="World/Clock" to="World/Player" method="_on_Hour_passed"]
+[connection signal="timeout" from="World/Clock" to="World" method="_on_Hour_passed"]
+[connection signal="timeout" from="World/Test" to="World/Player" method="_on_Test_timeout"]

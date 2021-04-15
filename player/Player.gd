@@ -3,13 +3,15 @@ extends KinematicBody2D
 export var speed = 100
 export var hp = 100
 var temperature = 100
+
+var inventory = {}
+
 var screen_size: Vector2
 
 signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-  # hide()
   screen_size = get_viewport_rect().size
 
 func _process(delta: float):
@@ -80,3 +82,7 @@ func _on_Hour_passed():
 
   if temperature <=0:
     hp = hp - 100
+
+
+func _on_Test_timeout():
+  pass

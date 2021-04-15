@@ -8,11 +8,12 @@ export var _heat_modifier = 0.5
 export var current_heat = 0
 export var time_interval = 3
 var _initial_heat = 50
+var items = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
   get_node("Clock").start(time_interval)
-
+  _loadItems()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -22,8 +23,8 @@ func _ready():
 func _on_Hour_passed():
   _pass_time()
   _handleHeat()
-  print("\nhour_passed")
-  print("day ", day,"\ntime ", time,"\ncurrent_heat ", current_heat,"\n_heat_modifier ", _heat_modifier)
+#  print("\nhour_passed")
+#  print("day ", day,"\ntime ", time,"\ncurrent_heat ", current_heat,"\n_heat_modifier ", _heat_modifier)
   
 func _pass_time():
   if time > 23:
@@ -43,3 +44,11 @@ func _pass_day():
 func _get_temperature(x, h, a):
   var y = -a * h * cos((PI*x)/12)
   return y
+  
+func _loadItems():
+  print("loading items...")
+  var itemsFile = File.new()
+  itemsFile.open("res://config/items.json", File.READ)
+  var itemsStr = itemsFile.get_as_text()
+  items = JSON.parse(itemsStr).result
+  print("items loaded", items)

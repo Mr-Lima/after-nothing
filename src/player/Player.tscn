@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://player/Player.gd" type="Script" id=1]
-[ext_resource path="res://player/marcelo_walk.png" type="Texture" id=2]
-[ext_resource path="res://player/marcelo_idle.png" type="Texture" id=3]
+[ext_resource path="res://src/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/player/marcelo_walk.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/marcelo_idle.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -54,7 +54,6 @@ height = 73.3369
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0.0886383, 0.192051 )
 script = ExtResource( 1 )
-speed = 100
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 8.42208, -6.3742 )

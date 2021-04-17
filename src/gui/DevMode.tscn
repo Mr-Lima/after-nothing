@@ -1,0 +1,118 @@
+[gd_scene format=2]
+
+[node name="DevMode" type="MarginContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -156.0
+margin_bottom = 326.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 136.0
+margin_bottom = 306.0
+color = Color( 0, 0, 0, 0.513726 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 136.0
+margin_bottom = 306.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 106.0
+margin_bottom = 276.0
+size_flags_vertical = 3
+
+[node name="FPSItem" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 63.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/FPSItem"]
+margin_right = 38.0
+margin_bottom = 63.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/FPSItem/MarginContainer"]
+margin_right = 38.0
+margin_bottom = 63.0
+
+[node name="FPSLabel" type="Label" parent="MarginContainer/HBoxContainer/FPSItem/MarginContainer"]
+margin_top = 24.0
+margin_right = 38.0
+margin_bottom = 38.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "FPS: X"
+
+[node name="DayItem" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 67.0
+margin_right = 96.0
+margin_bottom = 131.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/DayItem"]
+margin_right = 40.0
+margin_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/DayItem/MarginContainer"]
+margin_right = 40.0
+margin_bottom = 64.0
+
+[node name="DayLabel" type="Label" parent="MarginContainer/HBoxContainer/DayItem/MarginContainer"]
+margin_top = 25.0
+margin_right = 40.0
+margin_bottom = 39.0
+text = "Day: X"
+
+[node name="TimeItem" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 135.0
+margin_right = 96.0
+margin_bottom = 198.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/TimeItem"]
+margin_right = 47.0
+margin_bottom = 63.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TimeItem/MarginContainer"]
+margin_right = 47.0
+margin_bottom = 63.0
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/HBoxContainer/TimeItem/MarginContainer"]
+margin_top = 24.0
+margin_right = 47.0
+margin_bottom = 38.0
+text = "Hour: X"
+
+[node name="HeatItem" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_top = 202.0
+margin_right = 96.0
+margin_bottom = 266.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/HeatItem"]
+margin_right = 52.0
+margin_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/HeatItem/MarginContainer"]
+margin_right = 52.0
+margin_bottom = 64.0
+
+[node name="HeatLabel" type="Label" parent="MarginContainer/HBoxContainer/HeatItem/MarginContainer"]
+margin_top = 25.0
+margin_right = 52.0
+margin_bottom = 39.0
+text = "Temp: X"

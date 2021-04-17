@@ -1,28 +1,34 @@
 extends KinematicBody2D
 
-export var speed = 100
-export var hp = 100
-var temperature = 100
+export var speed := 150
+export var hp := 100
 
-var inventory = {}
-
-var screen_size: Vector2
-
-signal hit
+onready var temperature := 100
+onready var inventory = {}
+onready var screen_size: Vector2
+onready var health_system := HealthSystem.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
   screen_size = get_viewport_rect().size
 
+
 func _process(delta: float):
-  var velocity = player_input()
+  var velocity = _player_input()
 
   $AnimatedSprite.play()
-  select_animation(velocity)
+  _select_animation(velocity)
 
-  position += move_and_slide(velocity) * delta
+  position += move_and_slide(velocity * delta)
   position.x = clamp(position.x, 0, screen_size.x)
   position.y = clamp(position.y, 0, screen_size.y)
+
+
+func hit(value, body_part) -> void:
+  print("player_hit")
+#  _start_plus_frames(1.0)
+  health_system.hurt(value, body_part)
+
 
 func start(pos: Vector2):
   position = pos
@@ -30,7 +36,8 @@ func start(pos: Vector2):
   show()
   $CollisionShape2D.disabled = false
 
-func player_input() -> Vector2:
+
+func _player_input() -> Vector2:
   var velocity = Vector2()
   if Input.is_action_pressed("ui_right"):
     velocity.x += 1
@@ -44,7 +51,8 @@ func player_input() -> Vector2:
     velocity = velocity.normalized() * speed
   return velocity
 
-func select_animation(velocity: Vector2) -> void:
+
+func _select_animation(velocity: Vector2) -> void:
   if velocity.x == 0:
     $AnimatedSprite.animation = "idle"
 
@@ -54,35 +62,22 @@ func select_animation(velocity: Vector2) -> void:
     $AnimatedSprite.flip_h = velocity.x < 0
 
 
-func _on_Enemy_body_entered(_body):
-  emit_signal("hit")
-  print("hit")
+func _start_plus_frames(time: float):
+  self.set_deferred("disabled", true)
 
-  $CollisionShape2D.set_deferred("disabled", true)
+  yield(get_tree().create_timer(time), "timeout")
 
-  hp -= 1
-  if(hp <= 0):
-    hide()
-    self.queue_free()
-    return
-
-  yield(get_tree().create_timer(1.0), "timeout")
-
-  $CollisionShape2D.set_deferred("disabled", false)
+  self.set_deferred("disabled", false)
 
 
 func _on_Hour_passed():
   temperature = get_node("../../World").current_heat
   print("player temp ", temperature)
-  if temperature < 30:
-    hp = hp - 10
-
-  if temperature < 20:
-    hp = hp - 20
-
-  if temperature <=0:
-    hp = hp - 100
-
-
-func _on_Test_timeout():
-  pass
+#  if temperature < 30:
+#    hp = hp - 10
+#
+#  if temperature < 20:
+#    hp = hp - 20
+#
+#  if temperature <=0:
+#    hp = hp - 100

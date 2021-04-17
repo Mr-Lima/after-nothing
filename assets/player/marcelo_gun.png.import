@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/marcelo_gun.png-700eef0fd35f4d63ca0c34cb1ecc733b.stex"
+path="res://.import/marcelo_gun.png-8ab431382920d0d4320a1fe0fffe9410.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/marcelo_gun.png"
-dest_files=[ "res://.import/marcelo_gun.png-700eef0fd35f4d63ca0c34cb1ecc733b.stex" ]
+source_file="res://assets/player/marcelo_gun.png"
+dest_files=[ "res://.import/marcelo_gun.png-8ab431382920d0d4320a1fe0fffe9410.stex" ]
 
 [params]
 

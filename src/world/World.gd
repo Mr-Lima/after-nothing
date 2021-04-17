@@ -23,31 +23,24 @@ func _ready():
 #  pass
 
 
-func _load_timer(): 
-  hour_timer = Timer.new()
-  self.add_child(hour_timer)
-  hour_timer.start(hour_time_interval)
-  hour_timer.connect("timeout", self, "_on_Hour_passed")
-
-
-func _on_Hour_passed():
-  print("hour_passed")
+func _on_HourTimer_timeout():
   _pass_time()
   _handle_heat()
+  Events.emit_signal("time_passed", day, time, current_heat)
   
 
 func _pass_time():
-  if time > 23:
+  if time >= 23:
     _pass_day()
     time = 0
   else:
     time = time + 1
-  Events.emit_signal("time_passed", day, time, current_heat)
 
 
 func _handle_heat():
   var result = _get_temperature(time, _heat_modifier, _initial_heat)
   current_heat = stepify(result, 0.1)
+  print([time, _heat_modifier, _initial_heat, current_heat])
 
 
 func _pass_day():
@@ -69,3 +62,11 @@ func _load_items():
   var itemsStr = itemsFile.get_as_text()
   items = JSON.parse(itemsStr).result
   print("items loaded", items)
+  
+  
+func _load_timer(): 
+  hour_timer = Timer.new()
+  self.add_child(hour_timer)
+  hour_timer.start(hour_time_interval)
+  hour_timer.connect("timeout", self, "_on_HourTimer_timeout")
+  

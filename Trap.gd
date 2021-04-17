@@ -2,8 +2,7 @@ extends Area2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var damage = 50
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +17,8 @@ func _ready():
 
 
 func _on_Trap_entity_entered(entity):
-  if entity.has_method("hit"):
-    entity.hit(70, "legs")
+  if entity.player:
+    Events.emit_signal("player_hit_happened", HealthSystem.DamageSource.TRAP, self.damage, entity.player)
+  else:
+    entity.get_hit(self.damage)
   

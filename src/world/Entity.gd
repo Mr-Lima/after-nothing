@@ -1,11 +1,20 @@
-class_name HealthSystem
+extends Node
+class_name Entity
 
 # Declare member variables here. Examples:
-var body = {
-  "head": 100,
-  "torso": 100,
-  "legs": 100
+# var a = 2
+# var b = "text"
+var id = 0
+var hp = 100
+
+enum Penalty {
+  SLOW,
+  BLEED
  }
+
+
+func _init():
+  id = Utils.generate_entity_id()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +26,5 @@ func _ready():
 #func _process(delta):
 #  pass
 
-func hurt(hp, body_part) -> void:
-  body[body_part] -= hp
-  
+func get_hit(damage: int):
+  hp -= damage

@@ -9,13 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "HealthSystem",
+"base": "Node",
+"class": "Entity",
 "language": "GDScript",
-"path": "res://src/player/HealthSystem.gd"
+"path": "res://src/world/Entity.gd"
+}, {
+"base": "Entity",
+"class": "PlayerEntity",
+"language": "GDScript",
+"path": "res://src/player/PlayerEntity.gd"
 } ]
 _global_script_class_icons={
-"HealthSystem": ""
+"Entity": "",
+"PlayerEntity": ""
 }
 
 [application]
@@ -27,6 +33,8 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 Events="*res://src/Events.gd"
+Utils="*res://src/Utils.gd"
+HealthSystem="*res://src/HealthSystem.gd"
 
 [display]
 

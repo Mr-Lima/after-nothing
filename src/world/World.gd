@@ -40,11 +40,11 @@ func _pass_time():
 func _handle_heat():
   var result = _get_temperature(time, _heat_modifier, _initial_heat)
   current_heat = stepify(result, 0.1)
-  print([time, _heat_modifier, _initial_heat, current_heat])
+#  print([time, _heat_modifier, _initial_heat, current_heat])
 
 
 func _pass_day():
-  print("\nday_passed")
+#  print("\nday_passed")
   day = day + 1
   _heat_modifier = _heat_modifier + 0.1
   Events.emit_signal("day_passed", day)

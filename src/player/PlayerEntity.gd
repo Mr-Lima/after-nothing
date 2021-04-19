@@ -1,5 +1,5 @@
 class_name PlayerEntity
-extends Entity
+extends LivingEntity
 
 export var speed := 150
 

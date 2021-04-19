@@ -6,12 +6,14 @@ export var is_dev_mode := false
 onready var dev_mode_path
 onready var is_loaded := false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 # warning-ignore:return_value_discarded
   Events.connect("dev_mode_pressed", self, "_on_Dev_mode_pressed")
 # warning-ignore:return_value_discarded
   Events.connect("time_passed", self, "_on_Time_passed")
+  self.rect_size = get_viewport_rect().size
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

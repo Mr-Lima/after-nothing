@@ -1,3 +1,4 @@
+class_name HealthSystem
 extends Node
 
 enum SeriousDamage {

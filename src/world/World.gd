@@ -7,16 +7,32 @@ export var time = 0
 export var _heat_modifier = 0.5
 export var current_heat = 0
 export var hour_time_interval = 3
+
+var health_system: HealthSystem
+var entity_system: EntitySystem
+var chunk_system: ChunkSystem
+
 var _initial_heat = 50
 var items = {}
 var hour_timer
 
 
-# Called when the node enters the scene tree for the first time.
+
+func _init():
+  #load systems
+  self.health_system = HealthSystem.new()
+  self.entity_system = EntitySystem.new()
+  self.chunk_system = ChunkSystem.new()
+  
+
 func _ready():
   _load_timer()
   _load_items()
-
+  
+  print("spawn initial chunk")
+  var initial_chunk = self.chunk_system.generate_initial_chunks()
+  self.add_child(initial_chunk.color_rect)
+  self.move_child(initial_chunk.color_rect, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

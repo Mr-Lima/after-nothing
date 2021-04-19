@@ -9,18 +9,48 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Chunk",
+"language": "GDScript",
+"path": "res://src/world/Chunk.gd"
+}, {
+"base": "Node",
+"class": "ChunkSystem",
+"language": "GDScript",
+"path": "res://src/world/ChunkSystem.gd"
+}, {
 "base": "Node",
 "class": "Entity",
 "language": "GDScript",
-"path": "res://src/world/Entity.gd"
+"path": "res://src/entities/Entity.gd"
+}, {
+"base": "Node",
+"class": "EntitySystem",
+"language": "GDScript",
+"path": "res://src/world/EntitySystem.gd"
+}, {
+"base": "Node",
+"class": "HealthSystem",
+"language": "GDScript",
+"path": "res://src/world/HealthSystem.gd"
 }, {
 "base": "Entity",
+"class": "LivingEntity",
+"language": "GDScript",
+"path": "res://src/entities/LivingEntity.gd"
+}, {
+"base": "LivingEntity",
 "class": "PlayerEntity",
 "language": "GDScript",
 "path": "res://src/player/PlayerEntity.gd"
 } ]
 _global_script_class_icons={
+"Chunk": "",
+"ChunkSystem": "",
 "Entity": "",
+"EntitySystem": "",
+"HealthSystem": "",
+"LivingEntity": "",
 "PlayerEntity": ""
 }
 
@@ -34,7 +64,6 @@ config/icon="res://assets/icon.png"
 
 Events="*res://src/Events.gd"
 Utils="*res://src/Utils.gd"
-HealthSystem="*res://src/HealthSystem.gd"
 
 [display]
 

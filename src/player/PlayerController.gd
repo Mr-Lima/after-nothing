@@ -21,8 +21,8 @@ func _process(delta: float):
     animated_sprite.flip_h = velocity.x < 0
 
   position += move_and_slide(velocity * delta)
-  position.x = clamp(position.x, 0, screen_size.x)
-  position.y = clamp(position.y, 0, screen_size.y)
+#  position.x = clamp(position.x, 0, screen_size.x)
+#  position.y = clamp(position.y, 0, screen_size.y)
 
 
 #func start(pos: Vector2):
